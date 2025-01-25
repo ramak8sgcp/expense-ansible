@@ -1,6 +1,9 @@
 - name: install configuration
   hosts: mysql
   become: yes
+  vars:
+    mysql_root_password: ExpenseApp@1
+    login_host: mysql.ramana3490.online
   tasks:
   - name: install MYSQL server
     ansible.builtin.package:
@@ -13,3 +16,13 @@
       enabled: yes
       #need to check root password is set or not if not then set
       #search: ansible mysql module(ansble/community)
+  - name: connect mysql server  #ansible mysql module
+    community.mysql.mysql_info:
+      login_user: root
+      login_password:
+      login_host: "{{ mysql_root_password }}"
+    register: mysql_info
+
+  - name: print mysql info
+    ansible.builtin.debug:
+      msg: "{{ mysql_info }}"
