@@ -11,3 +11,5 @@
       name: mysqld
       state: started
       enabled: yes
+      #need to check root password is set or not if not then set
+      #search: ansible mysql module(ansble/community)
