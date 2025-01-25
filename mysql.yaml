@@ -36,3 +36,6 @@
   - name: setup MySQL root password
     ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
     when: mysql_info.failed is true
+    # once root password set then chec the sql status using below cmd
+    #$ mysql -h mysql.ramana3490.online -u root -pExpenseApp@1
+    # run the playbook again , it will show the output bcz its connected the db
