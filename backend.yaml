@@ -1,7 +1,7 @@
 - name: configure backend server
   hosts: backend
   become: yes
-  vers:
+  vars:
     mysql_root_password: ExpenseApp@1
     login_host: mysql.ramana3490.online
   tasks:
